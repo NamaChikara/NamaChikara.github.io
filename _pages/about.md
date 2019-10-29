@@ -6,7 +6,7 @@ description: Associate Data Scientist at <a href="getg5.com">G5</a>. Learner at 
 
 profile:
   align: right
-  image: my_prof_pic.jpg
+  image: my_prof_pic.JPG
   address: 
 
 news: true
