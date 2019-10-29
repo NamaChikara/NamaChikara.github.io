@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Zachary Barry | Exercism - Sum Of Multiples</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2019/sum-of-multiples/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Zachary</strong> Barry
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/projects/">projects</a>
+          
+        
+          
+        
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Exercism - Sum Of Multiples</h1>
+    <p class="post-meta">October 27, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <p>The problem “Sum Of Multiples” is to find the sum of all the unique multiples of particular numbers up to but not including a given number.  For example, suppose the limit number is 8 and the sequence numbers are 2 and 3.  Then the result would be 2 + 3 + 4 + 6 = 15. (Notice that 6 was not counted twice, even though it is a multiple of both 2 and 3.)</p>
+
+<p>Since Scala supports both functional and imperative programming, I thought it would be interesting to write two different solutions. Simply put, writing code in a functional style means avoiding the use of mutable variables while an imperative style has no such restriction.  This <a href="https://codeburst.io/a-beginner-friendly-intro-to-functional-programming-4f69aa109569">article</a> provides a more thorough introduction to the differences between the two.</p>
+
+<p>Near the end of this post, I compare the performance of my implementations to that of one of the top community solutions to the problem.  (Spoiler alert) the community solution topped my own by an order of magnitude. My thoughts on that difference at the end.</p>
+
+<hr />
+<h3 id="solution-structure">Solution structure.</h3>
+
+<p>The test suite that Exercise provides with their problems informs the object/class design.  For this problem, each of the tests is similar to</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nf">test</span><span class="o">(</span><span class="s">"multiples of 3 or 5 up to 10"</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nv">SumOfMultiples</span><span class="o">.</span><span class="py">sum</span><span class="o">(</span><span class="nc">Set</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">),</span> <span class="mi">10</span><span class="o">)</span> <span class="n">should</span> <span class="nf">be</span><span class="o">(</span><span class="mi">23</span><span class="o">)</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>The solution will be an object or case class called SumOfMultiples with a public method “sum.”  I chose to go with an object instead of a case class because the features of a case class (constructor implementation, equality checks, etc.) will not be necessary for this problem.</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">object</span> <span class="nc">SumOfMultiples</span> <span class="o">{</span>
+
+  <span class="k">def</span> <span class="nf">sum</span><span class="o">(</span><span class="n">factors</span><span class="k">:</span> <span class="kt">Set</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span> <span class="n">limit</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+  
+  <span class="c1">// for each factor in factors, find all multiples less than limit
+</span>
+  <span class="c1">// add all the distinct multiples and return
+</span>
+  <span class="o">}</span>
+
+<span class="o">}</span></code></pre></figure>
+
+<p><em>What data structure should the multiples be stored in?</em> Note that Scala’s Set keeps only distinct values which is perfect for our use case.  We could use a list or an array, but then we would have to remove any duplicates before summing the multiples to get our solution.</p>
+
+<h3 id="imperative-solution">Imperative solution.</h3>
+
+<p>For the imperative solution, we create a List variable to keep track of all the multiples as we loop over the set of factors.  This list is later turned into a Set to remove the duplicate values, and the Set is then summed.  I chose not to use a Set for keeping track of values because added elements to a List is less cumbersome (Set(x0).concat(Set(x1)) vs. x1 :: List(x0)).</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">object</span> <span class="nc">SumOfMultiples</span> <span class="o">{</span>
+	
+  <span class="k">def</span> <span class="nf">sum</span><span class="o">(</span><span class="n">factors</span><span class="k">:</span> <span class="kt">Set</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span> <span class="n">limit</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+
+    <span class="k">var</span> <span class="n">multiples</span> <span class="k">=</span> <span class="nc">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>               <span class="c1">// create an empty list to store all multiples
+</span>                                              <span class="c1">// (adding values to lists is easier than adding to sets)
+</span>    <span class="nf">for</span> <span class="o">(</span><span class="n">f</span> <span class="k">&lt;-</span> <span class="n">factors</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">var</span> <span class="n">i</span> <span class="k">=</span> <span class="mi">1</span>
+      <span class="nf">while</span> <span class="o">((</span><span class="n">i</span> <span class="o">*</span> <span class="n">f</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="o">)</span> <span class="o">{</span>               <span class="c1">// check that the current multiple is less than limit	
+</span>        <span class="n">multiples</span> <span class="k">=</span> <span class="o">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">f</span><span class="o">)</span> <span class="o">::</span> <span class="n">multiples</span>      <span class="c1">// append the multiple to the list
+</span>        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="nv">multiples</span><span class="o">.</span><span class="py">toSet</span><span class="o">.</span><span class="py">sum</span>  <span class="c1">// duplicate values are removed when the list is converted to a set
+</span>  <span class="o">}</span>
+
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="functional-solution">Functional solution.</h3>
+
+<p>For the functional solution, I used for-yield comprehension to create a Set of Sets - one Set of multiples for each factor.  This Set of Sets is then flattened (removing the duplicate multiples) and summed.</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">object</span> <span class="nc">SumOfMultiples</span> <span class="o">{</span>
+
+  <span class="k">def</span> <span class="nf">sum</span><span class="o">(</span><span class="n">factors</span><span class="k">:</span> <span class="kt">Set</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span> <span class="n">limit</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+
+    <span class="k">val</span> <span class="nv">multiples</span> <span class="k">=</span> <span class="nf">for</span> <span class="o">(</span><span class="n">f</span> <span class="k">&lt;-</span> <span class="n">factors</span><span class="o">)</span> <span class="k">yield</span> <span class="o">{</span>  
+      <span class="nc">Iterator</span>                                
+        <span class="o">.</span><span class="py">iterate</span><span class="o">(</span><span class="n">f</span><span class="o">){</span> <span class="k">_</span> <span class="o">+</span> <span class="n">f</span> <span class="o">}</span>	<span class="c1">// see note (1) below
+</span>        <span class="o">.</span><span class="py">takeWhile</span><span class="o">(</span><span class="k">_</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="o">)</span>	<span class="c1">// see note (2) below
+</span>        <span class="o">.</span><span class="py">toSet</span>
+    <span class="o">}</span>
+
+    <span class="nv">multiples</span><span class="o">.</span><span class="py">flatten</span><span class="o">.</span><span class="py">sum</span>  <span class="c1">// multiples is a set of sets, we must 
+</span>                           <span class="c1">// flatten it to one set before summing
+</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Some notes about the implementation:</p>
+
+<p>1) iterate is a method that “generates the sequence resulting from the repeated application of a function to a start element”.  For our problem, we need to repeatedly advance a number by one multiple until the limit is passed.  That is, given a starting number <script type="math/tex">n</script>, we want to create <script type="math/tex">\{n, n + n, ...\}</script> until the sum is greater than the provided limit. In terms of the iterate method, the function we are repeatedly applying is <script type="math/tex">f(x) = x + n</script> and the starting element is <script type="math/tex">n</script>.</p>
+
+<p>2) iterate needs to be told when to stop applying the function. We apply the takeWhile() method which is an iterator returning elements from the object it is called on as long as a condition is satisfied.  In our case, the condition is that the sum is less than the limit.</p>
+
+<hr />
+<h3 id="benchmarking-solutions">Benchmarking solutions.</h3>
+
+<p>Okay, so I managed to write both an imperative and functional solution to the same problem… so what? While the functional code is cleaner, was there any performance benefit? It certainly took a lot longer to create the solution.</p>
+
+<p>To test performance, I timed how long it took each function to calculate the sum 100 times with factors = Set(2, 3, …, 9, 23, 42), limit = 10,000.  I did this 10 times each to get min/mean/max values in case there was a wide distribution in performance.  Exercism allows users to sort community solutions by upvote count, so I decided to include one of the <a href="https://exercism.io/tracks/scala/exercises/sum-of-multiples/solutions/26a2eef4e25b4a84835d5acc6468d607">highest ranked</a> solutions in my benchmark test.</p>
+
+<p>The min, mean, and max times (in seconds) were:</p>
+
+<ul>
+  <li>
+    <p>Imperative: 3.26, 3.34, 3.45</p>
+  </li>
+  <li>
+    <p>Functional: 3.15, 3.37, 3.53</p>
+  </li>
+  <li>
+    <p>Community: 0.24, 0.25, 0.26</p>
+  </li>
+</ul>
+
+<p>The imperative and functional implementations had approximately the same performance; both did far worse than the top community solution:</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala">  <span class="k">def</span> <span class="nf">sum</span><span class="o">(</span><span class="n">factors</span><span class="k">:</span> <span class="kt">Set</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span> <span class="n">limit</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nv">factors</span><span class="o">.</span><span class="py">flatMap</span><span class="o">(</span><span class="n">f</span> <span class="k">=&gt;</span> <span class="n">f</span> <span class="n">until</span> <span class="n">limit</span> <span class="n">by</span> <span class="n">f</span><span class="o">).</span><span class="py">sum</span>
+  <span class="o">}</span></code></pre></figure>
+
+<hr />
+<h3 id="parting-thoughts">Parting thoughts.</h3>
+
+<p>In hindsight, I see that the route I took was too complicated.  Instead of looking into creating a range list in Scala (as in the community solution), I thought the best way would be to use a for-yield statement with a while condition (leading me to <a href="https://stackoverflow.com/questions/26558120/may-a-while-loop-be-used-with-yield-in-scala">this</a> Stackoverflow post and the use of an Iterator).  <strong>Ultimately, there is a balance to be found between researching implementations to exercises and finding your own way.</strong>  Since the range list creation was (to me at least) the crux of the problem, I am not disappointed that my solution was slow.  On the flip side, I am glad that Exercism ranks community solutions so that I can learn from others’ expertise!</p>
+
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2019 Zachary Barry.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXXXXXX', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+
+</html>
