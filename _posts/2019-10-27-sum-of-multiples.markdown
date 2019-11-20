@@ -121,5 +121,3 @@ The imperative and functional implementations had approximately the same perform
 ### Parting thoughts.
 
 In hindsight, I see that the route I took was too complicated.  Instead of looking into creating a range list in Scala (as in the community solution), I thought the best way would be to use a for-yield statement with a while condition (leading me to [this](https://stackoverflow.com/questions/26558120/may-a-while-loop-be-used-with-yield-in-scala) Stackoverflow post and the use of an Iterator).  **Ultimately, there is a balance to be found between researching implementations to exercises and finding your own way.**  Since the range list creation was (to me at least) the crux of the problem, I am not disappointed that my solution was slow.  On the flip side, I am glad that Exercism ranks community solutions so that I can learn from others' expertise!  
-
-
