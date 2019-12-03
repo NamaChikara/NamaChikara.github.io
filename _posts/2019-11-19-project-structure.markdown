@@ -2,7 +2,7 @@
 layout: post
 title: Project Structure (SBT)
 date: 2019-11-19 18:25:00
-description: My First Scala Project
+description: FiniteDifferences Project - Part I
 ---
 I've been spending more time reading [Programming in Scala](https://www.oreilly.com/library/view/programming-in-scala/9780981531687/) than working through Exercism problems recently. I realized that to properly practice and understand the concepts, I needed to leave the command line behind and start a (small) project.  
 
@@ -26,13 +26,13 @@ The project I'll be working on is an implementation of various [finite differenc
 
 The entry point to my program, Main.scala, belongs in src/main/scala.  I'll need to create a package with several subpackages and/or classes (e.g. Polynomials, TrapezoidMethod, etc.) to support the program.  Where should this code go?
 
-According to the [docs](https://docs.scala-lang.org/tour/packages-and-imports.html) the base package for an organization such as Google would follow the structure
+According to the [docs](https://docs.scala-lang.org/tour/packages-and-imports.html) and [stackoverflow](https://stackoverflow.com/questions/19859215/naming-convention-for-packages-and-projects) the base package for an organization such as Google would follow the structure
 
 <pre>GoogleProject/src/main/scala/com/google/googleproject/package1/class1.scala</pre>
 
-I am merely an individual so I will be adopting the structure this [stackoverflow post](https://stackoverflow.com/a/5914129/11407644) describes:
+My structure then looks like
 
-<pre>FiniteDifferences/src/main/scala/org/ztbarry/finitedifferences/nicefunctions/polynomials.scala</pre>
+<pre>FiniteDifferences/src/main/scala/com/ztbarry/finitedifferences/nicefunctions/polynomials.scala</pre>
 
 ### Writing A Package
 
@@ -48,7 +48,7 @@ class Polynomial {
 
 {% endhighlight %}
 
-The package declaration tells the compiler that everything following should be put in the `org.ztbarry.finitedifferences.nicefunctions` project.  Everything inside this project will also be visible within the file I've started above.  So if I want to reference some other class from the `nicefunctions` project, say ContinuousFunctions, I can do that here.
+The package declaration tells the compiler that everything following should be put in the `com.ztbarry.finitedifferences.nicefunctions` project.  Everything inside this project will also be visible within the file I've started above.  So if I want to reference some other class from the `nicefunctions` project, say ContinuousFunctions, I can do that here.
 
 ### Next Steps
 
