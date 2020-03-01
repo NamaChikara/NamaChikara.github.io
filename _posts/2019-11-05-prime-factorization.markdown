@@ -112,10 +112,10 @@ Map[Int, Int] = {
     all_factors
   } else if (value % factor == 0) {
     // divide the factor out of value, increment the value it is pointing to, and repeat
-    get_prime_f(value / factor, factor, all_factors + (factor -> (all_factors(factor) + 1)))
+    get_prime_factors(value / factor, factor, all_factors + (factor -> (all_factors(factor) + 1)))
   } else {
     // check the next odd number 
-    get_prime_f(value, next_odd_number(factor), all_factors)
+    get_prime_factors(value, next_odd_number(factor), all_factors)
   }
 
 }
