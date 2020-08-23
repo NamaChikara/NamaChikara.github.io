@@ -16,4 +16,4 @@ As an Associate Data Scientist at [G5](getg5.com), my job is to provide internal
 
 My current side project is to improve my working knowledge of ["Big Data"](https://pbs.twimg.com/media/C6kSnM7WsAE6m9b.jpg) by learning Scala. sparklyr and PySpark are great libraries for collaboratively prototyping Spark models, but they can become [costly](https://www.dezyre.com/article/scala-vs-python-for-apache-spark/213) when there's a big job that needs to run every night. I will be documenting some of my learnings on this blog.
 
-In my free time, I am always feeding my music and concert addiction.  I backpack when the ground is dry, skate ski when the ground is frozen, and disc golf whenever I can.  
+In my free time, I am always feeding my music and concert addiction.  I backpack when the ground is dry, skate ski when the ground is frozen, and disc golf whenever I can.  You can find some of my travel photos on the tiles in my [projects page](https://zackbarry.github.io/projects/).

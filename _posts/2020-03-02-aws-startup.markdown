@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Starting Out - Spark on AWS
+title: Spark Pipelines on AWS EMR
 date: 2020-03-02 18:25:00
 description: Big Data NLP Project - Part I
 ---
@@ -69,6 +69,8 @@ The EMR Spark Notebook that we opened at the end of the previous stage supports 
 **2)** Read in data from S3 bucket.  Note: this step assumes you created the EMR Notebook and the S3 Bucket with the same AWS account.
 <p align="center"><img src="/assets/img/030220-aws-startup-emr-notebook-read-csv.png" alt="emr-menu" width="550" vspace="20" style="border:3px solid black"/></p>
 **3)** Import Spark libraries necessary for the analysis you want to do.  
+
+I've written a notebook using this setup that trains a Spark pipeline with a NaiveBayes classifier. You can find the source code at [github.com/ZackBarry/gRowing/blob/master/stackoverflow_closed/predict_status_using_tags_small.ipynb](https://github.com/ZackBarry/gRowing/blob/master/stackoverflow_closed/predict_status_using_tags_small.ipynb).
 
 # Conclusion
 

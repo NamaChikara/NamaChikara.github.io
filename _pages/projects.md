@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Photos taken with Sony a6500.
+long_description: Photos taken in and around the PNW.
 ---
 
 {% for project in site.projects %}
