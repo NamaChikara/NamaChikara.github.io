@@ -4,19 +4,18 @@
     height: 250px;
     padding: 10px;
     vertical-align: middle;
-    width: 33.33%;
+    width: 100%;
 
     .thumbnail {
         overflow: hidden;
-        height: 200px;
+        height: 230px;
         width: 100%;
 
         img {
             height: auto;
             position: relative;
-                left: -25%;
                 top: -5%;
-            width: 500px;
+            width: 100%;
         }
 
         a {
@@ -34,7 +33,7 @@
                 right: 0;
                 background: rgba(0,0,0,0.4);
                 color: $grey-color-light;
-                padding: 40px;
+                padding: 70px;
                 text-align: center;
 
                 h1 {
