@@ -32,9 +32,9 @@ Note: The package I am writing is called `com.ztbarry.nicefunctions` and the cla
 
 <pre>scala> import com.ztbarry.nicefunctions.Polynomial</pre>
 
-5) *Use the class!.* I'll create the polygon $$4.2 + 2.1x + 0.7x^2$$:
+5) *Use the class!.* I'll create the polynomial $$4.2 + 2.1x + 0.7x^2$$:
 
-<pre>scala> val parabola = new Polygon(Vector[Double](4.2, 2.1, 0.7))</pre>
+<pre>scala> val parabola = new Polynomial(Vector[Double](4.2, 2.1, 0.7))</pre>
 
 #### Method 2: SBT
 
@@ -54,9 +54,9 @@ They pointed me towards using the command `sbt console`, which "load[s] up the s
 
 <pre>scala> import com.ztbarry.nicefunctions.Polynomial</pre>
 
-4) *Use the class!.* I'll create the polygon $$4.2 + 2.1x + 0.7x^2$$:
+4) *Use the class!.* I'll create the polynomial $$4.2 + 2.1x + 0.7x^2$$:
 
-<pre>scala> val parabola = new Polygon(Vector[Double](4.2, 2.1, 0.7))</pre>
+<pre>scala> val parabola = new Polynomial(Vector[Double](4.2, 2.1, 0.7))</pre>
 
 *Note:* I could have run `sbt console` from within the `FiniteDifferences` directory to include the project code for *all* packages within the project, including `com.ztbarry.nicefunctions`.  This is the method I'll be using going forward.
 
