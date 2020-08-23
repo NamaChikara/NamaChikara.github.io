@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-long_description: Photos taken in and around the PNW.
+long_description: Photos taken in and around the PNW, Winter/Spring 2020.
 ---
 
 {% for project in site.projects %}
